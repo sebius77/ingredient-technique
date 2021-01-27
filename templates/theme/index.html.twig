@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Thèmes{% endblock %}
+
+{% block body %}
+    <div class="container my-3">
+        <h4>Liste des thèmes</h4>
+        <table class="table">
+            <div class="table table-bordered">
+                <tr>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Couleur</th>
+                </tr>
+                {% for theme in themes %}
+                    <tr>
+                        <td>{{ theme.title }}</td>
+                        <td>{{ theme.description }}</td>
+                        <td><div class="text-center" style="background-color: {{ theme.color }};"> {{ theme.color }} </div></td>
+                    </tr>
+                {% endfor %}
+            </div>
+        </table>
+    </div>
+{% endblock %}
