@@ -19,7 +19,11 @@ class ThemeController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('theme/index.html.twig');
+        $themes = $this->getDoctrine()->getRepository(Theme::class)->findAll();
+
+        return $this->render('theme/index.html.twig', [
+            'themes' => $themes
+        ]);
     }
 
     /**
@@ -36,7 +40,9 @@ class ThemeController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($theme);
             $em->flush();
-        
+
+            $this->addFlash('success', 'Le thème a été ajouté avec succès !!');
+            return $this->redirectToRoute('theme');
         }
 
         return $this->render('theme/add.html.twig', [
