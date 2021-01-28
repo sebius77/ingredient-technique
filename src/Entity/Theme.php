@@ -39,6 +39,11 @@ class Theme
      */
     private $concepts;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $textColor;
+
     public function __construct()
     {
         $this->concepts = new ArrayCollection();
@@ -111,6 +116,18 @@ class Theme
                 $concept->setTheme(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTextColor(): ?string
+    {
+        return $this->textColor;
+    }
+
+    public function setTextColor(string $textColor): self
+    {
+        $this->textColor = $textColor;
 
         return $this;
     }

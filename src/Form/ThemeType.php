@@ -22,6 +22,9 @@ class ThemeType extends AbstractType
             ->add('color', ColorType::class, [
                 'label' => 'Couleur'
             ])
+            ->add('textColor', ColorType::class, [
+                'label' => 'Couleur du texte'
+            ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
                 'required' => false

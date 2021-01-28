@@ -49,4 +49,26 @@ class ThemeController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/theme/edit/{id}", name="theme_edit", requirements={"id"= "\d+"})
+     */
+    public function edit(Request $request, $id)
+    {
+        $theme = $this->getDoctrine()->getRepository(Theme::class)->find($id);
+        $form = $this->createForm(ThemeType::class, $theme);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            
+            $this->addFlash('success', 'Le thème a été modifié avec succès !!');
+            return $this->redirectToRoute('theme');
+        }
+
+        return $this->render('theme/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 }

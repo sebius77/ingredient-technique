@@ -3,9 +3,8 @@
 {% extends('base.html.twig') %}
 
 {% block body %}
-
     <div class="container" style="min-height: 600px;">
-        <h4>Ajout d'un thème</h4>
+        <h4>Edition d'un thème</h4>
         {{ form_start(form) }}
 
         <div class="row">
@@ -30,11 +29,9 @@
         </div>
         <div class="row my-3">
             <div class="col-md-12">
-                {{ form_row(form.submit, {"attr": {"class": "form-control btn btn-sm btn-secondary"}}) }}
+                {{ form_row(form.submit, {"label": "Mettre à jour", "attr": {"class": "form-control btn btn-sm btn-secondary"}}) }}
             </div>
         </div>
-
         {{ form_end(form) }}
     </div>
-
 {% endblock %}

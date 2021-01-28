@@ -5,21 +5,23 @@
 {% block body %}
     <div class="container my-3">
         <h4>Liste des thèmes</h4>
-        <table class="table">
-            <div class="table table-bordered">
+        <table class="table table-bordered"> 
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Couleur</th>
+                <th>Actions</th>
+            </tr>
+            {% for theme in themes %}
                 <tr>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Couleur</th>
+                    <td>{{ theme.title }}</td>
+                    <td>{{ theme.description }}</td>
+                    <td><div class="text-center" style="background-color: {{ theme.color }}; color: {{ theme.textColor }};"> {{ theme.color }} </div></td>
+                    <td>
+                    <a href="{{ path('theme_edit', {"id": theme.id }) }}"><i class="fas fa-pen-square"></i></a>
+                    </td>
                 </tr>
-                {% for theme in themes %}
-                    <tr>
-                        <td>{{ theme.title }}</td>
-                        <td>{{ theme.description }}</td>
-                        <td><div class="text-center" style="background-color: {{ theme.color }};"> {{ theme.color }} </div></td>
-                    </tr>
-                {% endfor %}
-            </div>
+            {% endfor %} 
         </table>
     </div>
 {% endblock %}
