@@ -1,0 +1,44 @@
+{# templates/concept/add.html.twig #}
+
+{% extends('base.html.twig') %}
+
+{% block body %}
+
+    <div class="container" style="min-height: 600px;">
+        <h4>Ajout d'une notion</h4>
+        {{ form_start(form) }}
+
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.title, {"attr": {"class": "form-control"}}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{form_row(form.theme, {"attr": {"class": "form-control" }})}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{form_row(form.isDraft)}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.description, {"attr": {"class": "form-control"}}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.content, {"attr": {"class": "form-control"}}) }}
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-12">
+                {{ form_row(form.submit, {"attr": {"class": "form-control btn btn-sm btn-secondary"}}) }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

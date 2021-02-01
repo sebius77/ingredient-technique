@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ConceptRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +47,18 @@ class Concept
      * @ORM\ManyToOne(targetEntity=Theme::class, inversedBy="concepts")
      */
     private $theme;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isDraft;
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTime();
+        $this->updatedAt = new DateTime();
+        $this->isDraft = true;
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +133,18 @@ class Concept
     public function setTheme(?Theme $theme): self
     {
         $this->theme = $theme;
+
+        return $this;
+    }
+
+    public function getIsDraft(): ?bool
+    {
+        return $this->isDraft;
+    }
+
+    public function setIsDraft(bool $isDraft): self
+    {
+        $this->isDraft = $isDraft;
 
         return $this;
     }

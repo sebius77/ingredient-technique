@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <a class="navbar-brand" href="{{ path('default') }}">Ingrédient Technique</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -14,8 +14,8 @@
                 Notions
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownConcept">
-                <a class="dropdown-item" href="#">Liste</a>
-                <a class="dropdown-item" href="#">Ajouter</a>
+                <a class="dropdown-item" href="{{ path('concept') }}">Liste</a>
+                <a class="dropdown-item" href="{{ path('concept_add') }}">Ajouter</a>
                 </div>
             </li>
             <!-- Menu pour les thèmes -->

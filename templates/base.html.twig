@@ -17,12 +17,14 @@
         {% include('navbar.html.twig') %}
     {% endblock %}
 
-    <div class="container my-3" style="height:30px;">
+    <div class="container" style="min-height: 50px; margin-top: 60px;">
         {% include('flash-message.html.twig') %}
     </div>
 
     <!-- BODY -->
+    <div class="container">
         {% block body %}{% endblock %}
+    </div>
  
     <!-- FOOTER -->
     <footer class="p-3">
