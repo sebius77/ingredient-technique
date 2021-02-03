@@ -2,110 +2,51 @@
 
 {% block title %}Ingrédient Technique{% endblock %}
 {% block body %}
-    <header>
-        <div class="jumbotron">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9">
-                        <h4>Objectif</h4>
-                        <p>
-                            Ce site a pour objectif de partager mon expérience dans le domaine du développement Web.<br>
-                            Et de créer un site permettant de réviser et de s' auto-évaluer.
-                        </p>
-                    </div>
-                    <div class="col-md-3 border border-1">
-                        <h5 class="w-100 text-center">Phrase du jour</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur dolorem dolorum
-                            esse est in labore maiores molestiae nesciunt nostrum pariatur quis quod ratione
-                            repellat tempora vel vitae, voluptate voluptatem!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
-                <h5>Derniers tutoriels</h5>
-                <div class="row">
+            <div class="col-md-12 mb-3">
+                <h5 class="mb-3">Derniers ajouts</h5>
+                {% set nbElement = 1 %}
+                {% for concept in concepts %}
+                    {% if (nbElement == 1) or (nbElement == 5) %}
+                        <div class="row">
+                    {% endif %}
                     <div class="col-md-3">
-                        <div class="card shadow rounded">
-                            <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card</p>
+                        <a href="#" style="text-decoration: none; color: black;">
+                            <div class="card shadow rounded">
+                                <div class="header d-flex justify-content-center align-items-center" style="background-color: {{ concept.theme.color }}; color: {{ concept.theme.textColor }}; min-height: 100px;">
+                                    <div><h4>{{ concept.theme.title }}</h4></div>
+                                </div>
+                                <div class="card-body card-body-concept">
+                                    {% if concept.updatedAt|date('d/m/Y') < "now"|date('d/m/Y')|date_modify("+ 5 day")  %}
+                                    <span class="badge badge-success shadow badge-position-right">Nouveau</span>
+                                    {% endif %}
+                                    <h6 class="card-title"><strong>{{ concept.title }}</strong></h6>
+                                    <p class="card-text" style="font-size: 0.8em;">
+                                        {% set longueur = concept.description|length %}
+                                        {% if longueur > 70 %}
+                                            {{ concept.description|slice(0,71) }}
+                                            ...
+                                        {% else %}
+                                            {{ concept.description }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <div class="footer border-top border-1 p-3 d-flex justify-content-between" style="color: #A9A9A9; font-size: 0.5em;">
+                                    <div>Créé le {{ concept.createdAt|date('d/m/Y') }}</div>
+                                    <div>Mis à jour le {{ concept.updatedAt|date('d/m/Y') }}</div>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card card shadow rounded">
-                            <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card</p>
-                            </div>
+                    {% if (nbElement == 4) or (nbElement == 8) %}
                         </div>
+                    {% endif %}
+                    {% set nbElement = nbElement + 1 %}
+                {% endfor %}
+                {% if (concepts|length <= 4) or (concepts|length <= 8) %}
                     </div>
-                    <div class="col-md-3">
-                        <div class="card shadow rounded">
-                            <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card card shadow rounded">
-                            <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row my-3">
-                    <div class="col-md-3">
-                        <div class="card shadow rounded">
-                            <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card shadow rounded">
-                            <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card shadow rounded">
-                            <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card shadow rounded">
-                            <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 my-3 d-flex justify-content-center">
-                <h5>Bloc Membre</h5>
+                {% endif %}
             </div>
         </div>
     </div>

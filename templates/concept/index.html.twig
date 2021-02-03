@@ -4,27 +4,46 @@
 
 {% block body %}
     <div class="container my-3">
+        {% set nbElement = 1 %}
         {% for concept in concepts %}
+            {% if (nbElement == 1) or (nbElement == 5) or (nbElement == 9) %}
+                <div class="row">
+            {% endif %}
             <div class="col-md-3">
                 <a href="{{ path('concept_edit', {"id": concept.id }) }}" style="text-decoration: none; color: black;">
                     <div class="card shadow rounded">
                         <div class="header d-flex justify-content-center align-items-center" style="background-color: {{ concept.theme.color }}; color: {{ concept.theme.textColor }}; min-height: 100px;">
                             <div><h4>{{ concept.theme.title }}</h4></div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body card-body-concept">
                             {% if concept.isDraft == true %}
-                                <span class="badge badge-danger shadow" style="position: absolute; top: 36%; left: 10%">Brouillon</span>
+                                <span class="badge badge-danger shadow badge-position-left">Brouillon</span>
                             {% endif %}
                             {% if concept.updatedAt|date('d/m/Y') < "now"|date('d/m/Y')|date_modify("+ 5 day")  %}
-                            <span class="badge badge-success shadow" style="position: absolute; top: 36%; right: 10%">Nouveau</span>
+                            <span class="badge badge-success shadow badge-position-right">Nouveau</span>
                             {% endif %}
                             <h6 class="card-title"><strong>{{ concept.title }}</strong></h5>
-                            <p class="card-text">{{ concept.description }}</p>
+                            <p class="card-text">
+                                {% set longueur = concept.description|length %}
+                                {% if longueur > 70 %}
+                                    {{ concept.description|slice(0,71) }}
+                                    ...
+                                {% else %}
+                                    {{ concept.description }}
+                                {% endif %}
+                            </p>
                         </div>
                         <div class="footer border-top border-1 p-3 d-flex justify-content-between" style="color: #A9A9A9; font-size: 0.6em;"><div>Créé le {{ concept.createdAt|date('d/m/Y') }}</div><div>Mis à jour le {{ concept.updatedAt|date('d/m/Y') }}</div></div>
                     </div>
                 </a>
             </div>
+            {% if (nbElement == 4) or (nbElement == 8) or (nbElement == 12) %}
+            </div>
+            {% endif %}
+            {% set nbElement = nbElement + 1 %}    
         {% endfor %}
+        {% if (concepts|length <= 4) or (concepts|length <= 8) or (concepts|length <= 12) %}
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

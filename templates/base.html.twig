@@ -17,14 +17,41 @@
         {% include('navbar.html.twig') %}
     {% endblock %}
 
-    <div class="container" style="min-height: 50px; margin-top: 60px;">
-        {% include('flash-message.html.twig') %}
-    </div>
+    {% if not is_granted('ROLE_ADMIN') %}
+        <header>
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h4>Objectif</h4>
+                            <p>
+                                Ce site a pour objectif de partager mon expérience dans le domaine du développement Web.<br>
+                                Et de créer un site permettant de réviser et de s' auto-évaluer.
+                            </p>
+                        </div>
+                        <div class="col-md-3 border border-1">
+                            <h5 class="w-100 text-center">Phrase du jour</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur dolorem dolorum
+                                esse est in labore maiores molestiae nesciunt nostrum pariatur quis quod ratione
+                                repellat tempora vel vitae, voluptate voluptatem!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    {% endif %}
 
     <!-- BODY -->
-    <div class="container">
-        {% block body %}{% endblock %}
-    </div>
+    
+        <div class="container">
+            {% if not is_granted('ROLE_ADMIN') %}
+                <div style="min-height: 50px; margin-top: 30px;">
+                    {% include('flash-message.html.twig') %}
+                </div>
+            {% endif %}    
+            {% block body %}{% endblock %}
+        </div>
+    
  
     <!-- FOOTER -->
     <footer class="p-3">

@@ -11,3 +11,14 @@ footer {
     background-color: #47A5FC;
 }
 
+.card-body-concept {
+    height: 190px;
+}
+
+.badge-position-right {
+    position: absolute; top: 30%; right: 10%;
+}
+
+.badge-position-left {
+    position: absolute; top: 30%; left: 10%;
+}

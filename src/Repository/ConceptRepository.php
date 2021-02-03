@@ -47,4 +47,16 @@ class ConceptRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function lastEight()
+    {
+        return $this->createQueryBuilder('c')
+        ->andWhere('c.isDraft = :bool')
+        ->setParameter('bool', false)
+        ->setMaxResults(8)
+        ->orderBy('c.updatedAt', 'DESC')
+        ->getQuery()
+        ->getResult()
+        ;
+    }
 }

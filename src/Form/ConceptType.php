@@ -26,7 +26,8 @@ class ConceptType extends AbstractType
                 'label' => 'Description'
                 ])
             ->add('isDraft', CheckboxType::class, [
-                'label' => 'Brouillon'
+                'label' => 'Brouillon',
+                'required' => false
             ])
             ->add('content',CKEditorType::class, [
                 'label' => 'Contenu'
