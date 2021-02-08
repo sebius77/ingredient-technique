@@ -12,31 +12,8 @@
                         <div class="row">
                     {% endif %}
                     <div class="col-md-3">
-                        <a href="#" style="text-decoration: none; color: black;">
-                            <div class="card shadow rounded">
-                                <div class="header d-flex justify-content-center align-items-center" style="background-color: {{ concept.theme.color }}; color: {{ concept.theme.textColor }}; min-height: 100px;">
-                                    <div><h4>{{ concept.theme.title }}</h4></div>
-                                </div>
-                                <div class="card-body card-body-concept">
-                                    {% if concept.updatedAt|date('d/m/Y') < "now"|date('d/m/Y')|date_modify("+ 5 day")  %}
-                                    <span class="badge badge-success shadow badge-position-right">Nouveau</span>
-                                    {% endif %}
-                                    <h6 class="card-title"><strong>{{ concept.title }}</strong></h6>
-                                    <p class="card-text" style="font-size: 0.8em;">
-                                        {% set longueur = concept.description|length %}
-                                        {% if longueur > 70 %}
-                                            {{ concept.description|slice(0,71) }}
-                                            ...
-                                        {% else %}
-                                            {{ concept.description }}
-                                        {% endif %}
-                                    </p>
-                                </div>
-                                <div class="footer border-top border-1 p-3 d-flex justify-content-between" style="color: #A9A9A9; font-size: 0.5em;">
-                                    <div>Créé le {{ concept.createdAt|date('d/m/Y') }}</div>
-                                    <div>Mis à jour le {{ concept.updatedAt|date('d/m/Y') }}</div>
-                                </div>
-                            </div>
+                        <a href="{{ path('concept_show', {'id': concept.id }) }}" style="text-decoration: none; color: black;">
+                            {% include('concept.html.twig') %}
                         </a>
                     </div>
                     {% if (nbElement == 4) or (nbElement == 8) %}

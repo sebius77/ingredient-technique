@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Concept;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,6 +19,18 @@ class DefaultController extends AbstractController
         
         return $this->render('default/index.html.twig', [
             'concepts' =>  $concepts
+        ]);
+    }
+
+    /**
+     * @Route("/concept/show/{id}", name="concept_show", requirements={"id": "\d+"})
+     */
+    public function show(Request $request, $id)
+    {
+        $concept = $this->getDoctrine()->getRepository(Concept::class)->find($id);
+
+        return $this->render('default/show.html.twig', [
+            'concept' => $concept
         ]);
     }
 
