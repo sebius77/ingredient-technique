@@ -7,7 +7,7 @@
         {% if concept.isDraft == true %}
             <span class="badge badge-danger shadow badge-position-left">Brouillon</span>
         {% endif %}
-        {% if concept.updatedAt|date('d/m/Y') < "now"|date('d/m/Y')|date_modify("+ 5 day")  %}
+        {% if concept.createdAt|date('d/m/Y') > ("now"|date_modify("+ 5 day"))  %}
         <span class="badge badge-success shadow badge-position-right">Nouveau</span>
         {% endif %}
         <h6 class="card-title"><strong>{{ concept.title }}</strong></h5>
@@ -21,5 +21,8 @@
             {% endif %}
         </p>
     </div>
-    <div class="footer border-top border-1 p-3 d-flex justify-content-between" style="color: #A9A9A9; font-size: 0.6em;"><div>Créé le {{ concept.createdAt|date('d/m/Y') }}</div><div>Mis à jour le {{ concept.updatedAt|date('d/m/Y') }}</div></div>
+    <div class="footer border-top border-1 p-3 d-flex justify-content-between" style="color: A9A9A9; font-size: 0.6em;">
+        <div>Créé le {{ concept.createdAt|date('d/m/Y') }}</div>
+        <div>Mis à jour le {{ concept.updatedAt|date('d/m/Y') }}</div>
+    </div>
 </div>
