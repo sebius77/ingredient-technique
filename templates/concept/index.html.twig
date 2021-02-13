@@ -7,7 +7,7 @@
         {% set nbElement = 1 %}
         {% for concept in concepts %}
             {% if (nbElement == 1) or (nbElement == 5) or (nbElement == 9) %}
-                <div class="row">
+                <div class="row my-2">
             {% endif %}
             <div class="col-md-3">
                 <a href="{{ path('concept_edit', {"id": concept.id }) }}" style="text-decoration: none; color: black;">
