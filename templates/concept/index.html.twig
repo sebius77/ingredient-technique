@@ -6,9 +6,6 @@
     <div class="container my-3">
         {% set nbElement = 1 %}
         {% for concept in concepts %}
-            {% if (nbElement == 1) or (nbElement == 5) or (nbElement == 9) %}
-                <div class="row my-2">
-            {% endif %}
             <div class="col-md-3">
                 <a href="{{ path('concept_edit', {"id": concept.id }) }}" style="text-decoration: none; color: black;">
                     {% include('concept.html.twig') %}
@@ -19,8 +16,5 @@
             {% endif %}
             {% set nbElement = nbElement + 1 %}    
         {% endfor %}
-        {% if (concepts|length <= 4) or (concepts|length <= 8) or (concepts|length <= 12) %}
-            </div>
-        {% endif %}
     </div>
 {% endblock %}
