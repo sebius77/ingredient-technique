@@ -8,8 +8,7 @@
             <span class="badge badge-danger shadow badge-position-left">Brouillon</span>
         {% endif %}
         {% if concept.createdAt|date_modify("+ 5 day")|date('Y-m-d') > ("now"|date('Y-m-d'))  %}
-    
-        <span class="badge badge-success shadow badge-position-right">Nouveau</span>
+            <span class="badge badge-success shadow badge-position-right">Nouveau</span>
         {% endif %}
         <h6 class="card-title"><strong>{{ concept.title }}</strong></h5>
         <p class="card-text">

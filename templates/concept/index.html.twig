@@ -3,18 +3,32 @@
 {% block title %}Notions{% endblock %}
 
 {% block body %}
+    <div class="container my-3" style="min-height: 3rem;">{% include('flash-message.html.twig') %}</div>
     <div class="container my-3">
-        {% set nbElement = 1 %}
-        {% for concept in concepts %}
-            <div class="col-md-3">
-                <a href="{{ path('concept_edit', {"id": concept.id }) }}" style="text-decoration: none; color: black;">
-                    {% include('concept.html.twig') %}
-                </a>
-            </div>
-            {% if (nbElement == 4) or (nbElement == 8) or (nbElement == 12) %}
-            </div>
-            {% endif %}
-            {% set nbElement = nbElement + 1 %}    
-        {% endfor %}
+        <table class="table-bordered">
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Créé le</th>
+                <th>Mis à jour le</th>
+                <th>Thème</th>
+                <th>Brouillon</th>
+                <th>Actions</th>
+            </tr>
+            {% for concept in concepts %}
+                <div class="col-md-3">
+                    <tr>
+                        <td>{{ concept.title }}</td>
+                        <td>{{ concept.description }}</td>
+                        <td>{{ concept.createdAt|date('d/m/Y') }}</td>
+                        <td>{{ concept.updatedAt|date('d/m/Y') }}</td>
+                        <td class="text-center"><span class="badge" style="background-color: {{ concept.theme.color }}; color: {{ concept.theme.textColor }}">{{ concept.theme.title }}</span></td>
+                        <td class="text-center">{{ concept.isDraft == true ? '<span class="badge" style="background-color: red; color: white;">Brouillon</span>'
+                            : '<span class="badge" style="background-color: green; color: white;">Publié</span>'  }}</td>
+                        <td class="text-center"><a href="{{ path('concept_edit', {"id": concept.id }) }}"><i class="far fa-edit"></i></a></td>
+                    </tr>
+                </div>
+            {% endfor %}
+        </table>
     </div>
 {% endblock %}
