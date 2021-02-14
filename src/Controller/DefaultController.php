@@ -3,10 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Concept;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Sentence;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DefaultController extends AbstractController
 {
@@ -15,10 +16,25 @@ class DefaultController extends AbstractController
      */
     public function index(): Response
     {
+        // Récupération des 8 dernières notions (concept) ajoutées
         $concepts = $this->getDoctrine()->getRepository(Concept::class)->lastEight();
-        
+
+        // Récupération des phrases du jour
+        $sentences = $this->getDoctrine()->getRepository(Sentence::class)->findAll(); 
+
+        // On génère un tableau de phrase avec pour index leur id
+        $tabSentences = [];
+        foreach ($sentences as $sentence)
+        {
+            $tabSentences[$sentence->getId()] = $sentence;
+        }
+
+        // On récupère au hazard une phrase
+        $random = array_rand($tabSentences, 1);
+
         return $this->render('default/index.html.twig', [
-            'concepts' =>  $concepts
+            'concepts' =>  $concepts,
+            'sentence' => $tabSentences[$random]
         ]);
     }
 

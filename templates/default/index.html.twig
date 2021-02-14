@@ -2,6 +2,28 @@
 
 {% block title %}Ingrédient Technique{% endblock %}
 {% block body %}
+
+    <header>
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h4>Objectif</h4>
+                            <p>
+                                Ce site a pour objectif de partager mon expérience dans le domaine du développement Web.<br>
+                                Et de créer un site permettant de réviser et de s' auto-évaluer.
+                            </p>
+                        </div>
+                        <div class="col-md-3 border border-1 bg-white shadow">
+                            <h5 class="w-100 text-center">Phrase du jour</h5>
+                            <p>{{ sentence.content }}</p>
+                            <blockquote class="text-right">{{ sentence.author }}</blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </header>    
+
     <div class="container">
         <div class="row">
             <div class="col-md-12 mb-3">
