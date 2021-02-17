@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ThemeRepository;
+use App\Repository\ModuleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ThemeRepository::class)
+ * @ORM\Entity(repositoryClass=ModuleRepository::class)
  */
-class Theme
+class Module
 {
     /**
      * @ORM\Id
@@ -25,27 +25,17 @@ class Theme
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $color;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity=Concept::class, mappedBy="theme")
+     * @ORM\ManyToMany(targetEntity=Concept::class, inversedBy="modules")
      */
     private $concepts;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $textColor;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Course::class, mappedBy="theme")
+     * @ORM\ManyToMany(targetEntity=Course::class, mappedBy="modules")
      */
     private $courses;
 
@@ -68,18 +58,6 @@ class Theme
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getColor(): ?string
-    {
-        return $this->color;
-    }
-
-    public function setColor(string $color): self
-    {
-        $this->color = $color;
 
         return $this;
     }
@@ -108,7 +86,6 @@ class Theme
     {
         if (!$this->concepts->contains($concept)) {
             $this->concepts[] = $concept;
-            $concept->setTheme($this);
         }
 
         return $this;
@@ -116,24 +93,7 @@ class Theme
 
     public function removeConcept(Concept $concept): self
     {
-        if ($this->concepts->removeElement($concept)) {
-            // set the owning side to null (unless already changed)
-            if ($concept->getTheme() === $this) {
-                $concept->setTheme(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getTextColor(): ?string
-    {
-        return $this->textColor;
-    }
-
-    public function setTextColor(string $textColor): self
-    {
-        $this->textColor = $textColor;
+        $this->concepts->removeElement($concept);
 
         return $this;
     }
@@ -150,7 +110,7 @@ class Theme
     {
         if (!$this->courses->contains($course)) {
             $this->courses[] = $course;
-            $course->setTheme($this);
+            $course->addModule($this);
         }
 
         return $this;
@@ -159,10 +119,7 @@ class Theme
     public function removeCourse(Course $course): self
     {
         if ($this->courses->removeElement($course)) {
-            // set the owning side to null (unless already changed)
-            if ($course->getTheme() === $this) {
-                $course->setTheme(null);
-            }
+            $course->removeModule($this);
         }
 
         return $this;
