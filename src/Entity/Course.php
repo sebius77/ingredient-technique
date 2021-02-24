@@ -34,11 +34,6 @@ class Course
      */
     private $modules;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Theme::class, inversedBy="courses")
-     */
-    private $theme;
-
     public function __construct()
     {
         $this->modules = new ArrayCollection();
@@ -93,18 +88,6 @@ class Course
     public function removeModule(Module $module): self
     {
         $this->modules->removeElement($module);
-
-        return $this;
-    }
-
-    public function getTheme(): ?Theme
-    {
-        return $this->theme;
-    }
-
-    public function setTheme(?Theme $theme): self
-    {
-        $this->theme = $theme;
 
         return $this;
     }

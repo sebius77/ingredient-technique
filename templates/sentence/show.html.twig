@@ -3,28 +3,31 @@
 {% block title %}Sentence{% endblock %}
 
 {% block body %}
-    <h1>Sentence</h1>
+    <div class="container" style="margin-top: 100px;">
+        <h4>Visualisation de la phrase</h4>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ sentence.id }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ sentence.content }}</td>
-            </tr>
-            <tr>
-                <th>Author</th>
-                <td>{{ sentence.Author }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ sentence.id }}</td>
+                </tr>
+                <tr>
+                    <th>Content</th>
+                    <td>{{ sentence.content }}</td>
+                </tr>
+                <tr>
+                    <th>Author</th>
+                    <td>{{ sentence.Author }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <a href="{{ path('sentence_index') }}">back to list</a>
+        <a href="{{ path('sentence_index') }}">back to list</a>
 
-    <a href="{{ path('sentence_edit', {'id': sentence.id}) }}">edit</a>
+        <a href="{{ path('sentence_edit', {'id': sentence.id}) }}">edit</a>
 
-    {{ include('sentence/_delete_form.html.twig') }}
+        {{ include('sentence/_delete_form.html.twig') }}
+    </div>
+    
 {% endblock %}

@@ -44,15 +44,9 @@ class Theme
      */
     private $textColor;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Course::class, mappedBy="theme")
-     */
-    private $courses;
-
     public function __construct()
     {
         $this->concepts = new ArrayCollection();
-        $this->courses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -134,36 +128,6 @@ class Theme
     public function setTextColor(string $textColor): self
     {
         $this->textColor = $textColor;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Course[]
-     */
-    public function getCourses(): Collection
-    {
-        return $this->courses;
-    }
-
-    public function addCourse(Course $course): self
-    {
-        if (!$this->courses->contains($course)) {
-            $this->courses[] = $course;
-            $course->setTheme($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCourse(Course $course): self
-    {
-        if ($this->courses->removeElement($course)) {
-            // set the owning side to null (unless already changed)
-            if ($course->getTheme() === $this) {
-                $course->setTheme(null);
-            }
-        }
 
         return $this;
     }
