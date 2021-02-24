@@ -21,12 +21,6 @@
     
     {% block body %}{% endblock %}
 
-     {% if not is_granted('ROLE_ADMIN') %}
-        <div style="min-height: 40px; margin-top: 30px;">
-            {% include('flash-message.html.twig') %}
-        </div>
-    {% endif %}    
- 
     <!-- FOOTER -->
     <footer class="p-3" style="margin-top: 50px;">
         <div class="row">
