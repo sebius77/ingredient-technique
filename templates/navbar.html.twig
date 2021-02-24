@@ -8,55 +8,18 @@
     {% if (app.user) and (is_granted('ROLE_ADMIN')) %}
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-            <!-- Menu pour les notions -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownConcept" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Notions
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownConcept">
-                <a class="dropdown-item" href="{{ path('concept') }}">Liste</a>
-                <a class="dropdown-item" href="{{ path('concept_add') }}">Ajouter</a>
-                </div>
-            </li>
-            <!-- Menu pour les thèmes -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTheme" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Thèmes
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownTheme">
-                <a class="dropdown-item" href="{{ path('theme') }}">Liste</a>
-                <a class="dropdown-item" href="{{ path('theme_add') }}">Ajouter</a>
-                </div>
-            </li>
-            <!-- Menu pour les routines -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRoutine" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Routines
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownRoutine">
-                <a class="dropdown-item" href="#">Liste</a>
-                <a class="dropdown-item" href="#">Ajouter</a>
-                </div>
-            </li>
-            <!-- Menu pour les exercices -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownExercise" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Exercices
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownExercise">
-                <a class="dropdown-item" href="#">Liste</a>
-                <a class="dropdown-item" href="#">Ajouter</a>
-                </div>
-            </li>
-            <!-- Menu pour les phrases du jour -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownExercise" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Phrases du jour
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownExercise">
-                <a class="dropdown-item" href="{{ path('sentence_index') }}">Liste</a>
-                </div>
-            </li>
+                <!-- Menu d'administration -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownConcept" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Administration
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownConcept">
+                        <a class="dropdown-item" href="{{ path('concept') }}">Notions</a>
+                        <a class="dropdown-item" href="{{ path('theme') }}">Thème</a>
+                        <a class="dropdown-item" href="#">Exercices</a>
+                        <a class="dropdown-item" href="{{ path('sentence_index') }}">Phrase aléatoire</a>
+                    </div>
+                </li>            
             </ul>
         </div>
     {% endif %}

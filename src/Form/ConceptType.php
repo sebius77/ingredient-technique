@@ -23,7 +23,8 @@ class ConceptType extends AbstractType
                 'label' => 'Titre'
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description'
+                'label' => 'Description',
+                'required' => false
                 ])
             ->add('isDraft', CheckboxType::class, [
                 'label' => 'Brouillon',

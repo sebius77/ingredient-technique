@@ -51,7 +51,7 @@ class ConceptController extends AbstractController
     }
 
     /**
-     * @Route("concept/edit/{id}", name="concept_edit", requirements={"id": "\d+"})
+     * @Route("/concept/edit/{id}", name="concept_edit", requirements={"id": "\d+"})
      */
     public function edit(Request $request, $id)
     {

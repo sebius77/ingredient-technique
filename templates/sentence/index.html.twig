@@ -1,37 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Sentence index{% endblock %}
+{% block title %}Menu phrase{% endblock %}
 
 {% block body %}
-    <h1>Sentence index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Content</th>
-                <th>Author</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for sentence in sentences %}
-            <tr>
-                <td>{{ sentence.id }}</td>
-                <td>{{ sentence.content }}</td>
-                <td>{{ sentence.Author }}</td>
-                <td>
-                    <a href="{{ path('sentence_show', {'id': sentence.id}) }}">show</a>
-                    <a href="{{ path('sentence_edit', {'id': sentence.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('sentence_new') }}">Create new</a>
+    <div class="container" style="margin-top:100px;">
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Liste des phrases</h4>
+            </div>
+            <div class="col-md-4  d-flex justify-content-end align-items-center">
+                <a href="{{ path('sentence_new') }}" class="btn btn-sm btn-success">Ajouter</a>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Content</th>
+                    <th>Author</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for sentence in sentences %}
+                <tr>
+                    <td>{{ sentence.id }}</td>
+                    <td>{{ sentence.content }}</td>
+                    <td>{{ sentence.Author }}</td>
+                    <td>
+                        <a href="{{ path('sentence_show', {'id': sentence.id}) }}">show</a>
+                        <a href="{{ path('sentence_edit', {'id': sentence.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>  
 {% endblock %}
