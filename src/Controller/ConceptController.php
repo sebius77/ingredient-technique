@@ -73,4 +73,17 @@ class ConceptController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/concept/delete/{id}", name="concept_delete", requirements={"id": "\d+"})
+     */
+    public function delete(Request $request, Concept $concept)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($concept);
+        $em->flush();
+
+        $this->addFlash('success', 'La notion a été supprimée avec succès !!');
+        return $this->redirectToRoute('concept');
+    }
 }

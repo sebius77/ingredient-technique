@@ -34,12 +34,13 @@
                         <td class="text-center"><span class="badge" style="background-color: {{ concept.theme.color }}; color: {{ concept.theme.textColor }}">{{ concept.theme.title }}</span></td>
                         <td class="text-center">{{ concept.isDraft == true ? '<span class="badge" style="background-color: red; color: white;">Brouillon</span>'
                             : '<span class="badge" style="background-color: green; color: white;">Publié</span>'  }}</td>
-                        <td class="text-center"><a href="{{ path('concept_edit', {"id": concept.id }) }}"><i class="far fa-edit"></i></a></td>
+                        <td class="d-flex justify-content-center align-items-center">
+                            <div class="ml-3"><a href="{{ path('concept_edit', {"id": concept.id }) }}"><i class="far fa-edit"></i></a></div>
+                            {% include('concept/_delete_form.html.twig') %}
+                        </td>
                     </tr>
                 </div>
             {% endfor %}
         </table>
-    </div>
-    
-    
+    </div>   
 {% endblock %}
