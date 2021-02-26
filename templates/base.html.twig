@@ -23,22 +23,8 @@
     </div>
 
     <!-- FOOTER -->
-    <footer>
-        <div class="row">
-            <div class="col-md-4 text-center">
-            </div>
-            <div class="col-md-4 text-center">
-                <h5>&copy; Ingrédient Technique</h5>
-            </div>
-            <div class="col-md-4">
-                <h6><a href="{{ path('about') }}">À propos</a></h6>
-                <h6><a href="{{ path('contact') }}">Contact</a></h6>
-                <h6><a href="{{ path('history') }}">Historique du site</a></h6>
-                <h6><a href="{{ path('tools') }}">Les outils</a></h6>
-                <h6><a href="{{ path('knowledge') }}">Les connaissances nécessaires</a></h6>
-            </div>
-        </div>
-    </footer>
+    {% include('default/footer.html.twig') %}
+    
         {% block javascripts %}
             {% include('javascripts.html.twig') %}
         {% endblock %}
