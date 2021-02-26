@@ -1,14 +1,24 @@
 body {
-    margin-top: 30px;
+   margin: 0;
+   padding: 0;
+}
+
+body, html {
+    height: 100%;
 }
 
 footer {
-    background-color: #130E1C;
+    height: 25%;
+    background-color: #120e1a;
     color: white;
 }
 
 .jumbotron {
     background-color: #47A5FC;
+}
+
+.main {
+    min-height: 75%;
 }
 
 .card-body-concept {
