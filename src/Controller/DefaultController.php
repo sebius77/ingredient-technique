@@ -45,6 +45,14 @@ class DefaultController extends AbstractController
     {
         $concept = $this->getDoctrine()->getRepository(Concept::class)->find($id);
 
+        if (is_null ($concept)) {
+            throw $this->createNotFoundException('La notion recherchée n\'existe pas !!!');
+        }
+
+        if ($concept->getIsDraft() === true) {
+            $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        }
+
         return $this->render('default/show.html.twig', [
             'concept' => $concept
         ]);
