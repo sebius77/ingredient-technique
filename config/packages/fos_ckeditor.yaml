@@ -1,4 +1,18 @@
 # Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
+fos_ck_editor:
+    base_path: "bundles/ckeditor_custom"
+    js_path: "bundles/ckeditor_custom/ckeditor.js"
+    configs:
+        my_config:
+            language: fr
+            codeSnippet_theme: 'monokai_sublime'
+            codeSnippet_languages:
+             - 'PHP'
+             - 'CSS'
+             - 'HTML'
+             - 'C#'
+             - 'JavaScript'
+             - 'SQL'
 
 twig:
     form_themes:
