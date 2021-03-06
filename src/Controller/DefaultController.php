@@ -16,8 +16,8 @@ class DefaultController extends AbstractController
      */
     public function index(): Response
     {
-        // Récupération des 8 dernières notions (concept) ajoutées
-        $concepts = $this->getDoctrine()->getRepository(Concept::class)->lastEight();
+        // Récupération de la dernière notion (concept) ajoutée
+        $concept = $this->getDoctrine()->getRepository(Concept::class)->last();
 
         // Récupération des phrases du jour
         $sentences = $this->getDoctrine()->getRepository(Sentence::class)->findAll(); 
@@ -33,7 +33,7 @@ class DefaultController extends AbstractController
         $random = array_rand($tabSentences, 1);
 
         return $this->render('default/index.html.twig', [
-            'concepts' =>  $concepts,
+            'concept' =>  $concept,
             'sentence' => $tabSentences[$random]
         ]);
     }

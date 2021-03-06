@@ -4,39 +4,15 @@
 
 {% block body %}
 
-    <div class="container" style="margin-top: 100px;">
-        <div class="row">
-            <div class="col-md-8"><h4>Ajout d'un thème</h4></div>
-        </div>
+    <div class="wrapper">
+        <div><>Ajout d'un thème</div>
+    
         {{ form_start(form) }}
-
-        <div class="row">
-            <div class="col-md-12">
-                {{ form_row(form.title, {"attr": {"class": "form-control"}}) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                {{ form_row(form.description, {"attr": {"class": "form-control"}}) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                {{ form_row(form.color, {"attr": {"class": "form-control"}}) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                {{ form_row(form.textColor, {"attr": {"class": "form-control"}}) }}
-            </div>
-        </div>
-        <div class="row my-3">
-            <div class="col-md-12">
-                {{ form_row(form.submit, {"attr": {"class": "form-control btn btn-sm btn-secondary"}}) }}
-            </div>
-        </div>
-
+            {{ form_row(form.title) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.color) }}
+            {{ form_row(form.textColor) }}
+            {{ form_row(form.submit) }}
         {{ form_end(form) }}
     </div>
-
 {% endblock %}

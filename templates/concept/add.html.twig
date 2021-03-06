@@ -4,45 +4,16 @@
 
 {% block body %}
 
-    <div class="container" style="margin-top: 100px;">
-        <div class="row">
-            <div class="col-md-8">
-                <h4>Ajout d'une notion</h4>
-            </div>
-        </div>
+    <div class="wrapper">
+        <h4>Ajout d'une notion</h4>
+    
         {{ form_start(form) }}
-
-        <div class="row">
-            <div class="col-md-12">
-                {{ form_row(form.title, {"attr": {"class": "form-control"}}) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                {{form_row(form.theme, {"attr": {"class": "form-control" }})}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                {{form_row(form.isDraft)}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                {{ form_row(form.description, {"attr": {"class": "form-control"}}) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                {{ form_row(form.content, {"attr": {"class": "form-control"}}) }}
-            </div>
-        </div>
-        <div class="row my-3">
-            <div class="col-md-12">
-                {{ form_row(form.submit, {"attr": {"class": "form-control btn btn-sm btn-secondary"}}) }}
-            </div>
-        </div>
+            {{ form_row(form.title) }}
+            {{form_row(form.theme) }}
+            {{form_row(form.isDraft)}}
+            {{ form_row(form.description) }}
+            {{ form_row(form.content) }}
+            {{ form_row(form.submit, {"attr": {"class": "form-control btn btn-sm btn-secondary"}}) }}
         {{ form_end(form) }}
     </div>
-
 {% endblock %}

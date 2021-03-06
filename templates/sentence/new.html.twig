@@ -3,13 +3,8 @@
 {% block title %}New Sentence{% endblock %}
 
 {% block body %}
-    <div class="container" style="margin-top: 100px;">
-        <div class="row">
-            <div class="col-md-8">
-                <h4>Ajout d'une phrase</h4>
-            </div>
-        </div>
+    <div class="wrapper">
+        <h4>Ajout d'une phrase</h4>
         {{ include('sentence/_form.html.twig') }}
     </div>
-    
 {% endblock %}

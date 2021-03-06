@@ -2,51 +2,35 @@
 
 {% block title %}Ingrédient Technique{% endblock %}
 {% block body %}
-    <header>
-            <div class="jumbotron">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <p>
-                                Bienvenue sur le site d'Ingrédient Technique. Ce site est en quelque sorte mon laboratoire pour
-                                tester les technologies du Web (HTML, CSS, JAVASCRIPT, PHP, Symfony ...)
-                                Je suis un petit développeur qui souhaite progresser et partager sa petite expérience...
-                                Le site va se construire au fur et à mesure. Aujourd'hui, il ne ressemble pas à grand chose mais j'espère le faire évoluer rapidement.
-                            </p>
-                        </div>
-                        <div class="col-md-3 border border-1 bg-white shadow">
-                            <h5 class="w-100 text-center">Phrase du jour</h5>
-                            <p>{{ sentence.content }}</p>
-                            <blockquote class="text-right">{{ sentence.author }}</blockquote>
-                        </div>
-                    </div>
+    <header class="header-jumbotron">
+            <p class="area-presentation">
+                Bienvenue sur le site d'Ingrédient Technique. Ce site est en quelque sorte mon laboratoire pour
+                tester les technologies du Web (HTML, CSS, JAVASCRIPT, PHP, Symfony ...)
+                Je suis un petit développeur qui souhaite progresser et partager sa petite expérience...
+                Le site va se construire au fur et à mesure. Aujourd'hui, il ne ressemble pas à grand chose mais j'espère le faire évoluer rapidement.
+            </p>
+            <div class="area-design">
+                <div class="box box-html"><span>HTML5</span></div>
+                <div class="box box-css"><span>CSS3</span></div>
+                <div class="box box-javascript"><span>JS</span></div>
+                <div class="box box-php"><span>PHP</span></div>
+                <div class="box box-sql"><span>SQL</span></div>
+            </div>
+            <div class="area-sentence">
+                <div class="sentence">
+                    <span>Ready
+                    &#9632;</span>
+                    <p>{{ sentence.content }}</p>
+                    <blockquote class="text-right">{{ sentence.author }}</blockquote>
                 </div>
             </div>
-    </header>    
+    </header>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 mb-3">
-                <h5 class="mb-3">Derniers ajouts</h5>
-                {% set nbElement = 1 %}
-                {% for concept in concepts %}
-                    {% if (nbElement == 1) or (nbElement == 5) %}
-                        <div class="row">
-                    {% endif %}
-                    <div class="col-md-3">
-                        <a href="{{ path('concept_show', {'id': concept.id }) }}" style="text-decoration: none; color: black;">
-                            {% include('concept.html.twig') %}
-                        </a>
-                    </div>
-                    {% if (nbElement == 4) or (nbElement == 8) %}
-                        </div>
-                    {% endif %}
-                    {% set nbElement = nbElement + 1 %}
-                {% endfor %}
-                {% if (concepts|length <= 4) or (concepts|length <= 8) %}
-                    </div>
-                {% endif %}
-            </div>
-        </div>
+    <div class="wrapper bg-grey">
+    <h1>{{ concept.title }}</h1>
+
+    <p>{{ concept.content|raw }}</p>
     </div>
+    
+             
 {% endblock %}

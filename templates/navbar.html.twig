@@ -1,25 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="{{ path('default') }}">Ingrédient Technique</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-    {% if (app.user) and (is_granted('ROLE_ADMIN')) %}
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <!-- Menu d'administration -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownConcept" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Administration
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownConcept">
-                        <a class="dropdown-item" href="{{ path('concept') }}">Notions</a>
-                        <a class="dropdown-item" href="{{ path('theme') }}">Thème</a>
-                        <a class="dropdown-item" href="#">Exercices</a>
-                        <a class="dropdown-item" href="{{ path('sentence_index') }}">Phrase aléatoire</a>
-                    </div>
-                </li>            
-            </ul>
+<nav class="navbar">
+        <div class="brand">
+            <div class="area-brand"><a href="{{ path('default') }}">Ingrédient Technique</a></div>
         </div>
+        
+        <div class="area-login"><a href="{{ path('admin') }}"><button>Admin</button></a></div>
+        
+    {% if (app.user) and (is_granted('ROLE_ADMIN')) %}
+        <a href="#">Administration</a>
+        <a href="{{ path('concept') }}">Notions</a>
+        <a href="{{ path('theme') }}">Thème</a>
+        <a href="#">Exercices</a>
+        <a href="{{ path('sentence_index') }}">Phrase aléatoire</a>    
     {% endif %}
 </nav>
