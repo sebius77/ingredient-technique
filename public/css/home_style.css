@@ -6,6 +6,7 @@
 
 @media (max-width: 1280px) {
     .header-jumbotron {
+        min-height: 300px;
         background: #162433;
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
