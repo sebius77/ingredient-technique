@@ -10,9 +10,10 @@ body, html {
 body {
    margin: 0;
    padding: 0;
-   font-family: 'DotGothic16', sans-serif;
+   font-family: 'IBM Plex Mono', sans-serif;
    display: flex;
    flex-direction: column;
+   
 }
 
 .main {
