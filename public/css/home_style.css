@@ -6,27 +6,28 @@
 
 @media (max-width: 1280px) {
     .header-jumbotron {
-        min-height: 300px;
         background: #162433;
         display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
         color: #c4c2c7;
     }
 
     .area-presentation {
-        grid-area: 2 / 2 / 3 / 3;
+        grid-area: 1 / 1 / 2 / 2;
+        display: flex;
+        text-align: center;
     }
 
     .area-design {
-        grid-area: 1 / 2 / 2 / 3;
+        grid-area: 1 / 1 / 2 / 2;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
     .area-sentence {
-        grid-area: 3 / 2 / 4 / 3;
+        grid-area: 2 / 1 / 3 / 2;
         text-align: center;
         display: flex;
         justify-content: center;
@@ -34,48 +35,44 @@
         margin: 20px auto;
     }
 
-    .area-sentence {
-        margin: 10px auto;
+    .sentence {
+        width: 90%;
+        height: auto;
     }
 }
 
 @media (min-width: 1280px) {
     .header-jumbotron {
-        min-height: 300px;
         background: #162433;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
         color: #c4c2c7;
     }
 
     .area-presentation {
-        grid-area: 2 / 2 / 3 / 4;
+        grid-area: 1 / 1 / 2 / 2;
+        text-align: center;
     }
 
     .area-design {
-        grid-area: 1 / 2 / 2 / 4;
+        grid-area: 1 / 1 / 2 / 2;
         display: flex;
         justify-content: center;
         align-items: center;
     }
     
     .area-sentence {
-        grid-area: 3 / 1 / 4 / 5;
+        grid-area: 2 / 1 / 3 / 2;
         text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 20px auto;
+        margin: 10px auto;
         min-height: 200px;
-    }
-
-    .area-sentence {
         width: 50%;
-        margin: 20px auto;
     }
 }
-
 
 .sentence {
     display: flex;

@@ -3,12 +3,11 @@
 {% block title %}Ingrédient Technique{% endblock %}
 {% block body %}
     <header class="header-jumbotron">
-            <p class="area-presentation">
-                Bienvenue sur le site d'Ingrédient Technique. Ce site est en quelque sorte mon laboratoire pour
-                tester les technologies du Web (HTML, CSS, JAVASCRIPT, PHP, Symfony ...)
-                Je suis un petit développeur qui souhaite progresser et partager sa petite expérience...
-                Le site va se construire au fur et à mesure. Aujourd'hui, il ne ressemble pas à grand chose mais j'espère le faire évoluer rapidement.
-            </p>
+            <div class="area-presentation">
+                <p>
+                Bienvenue sur le site d'Ingrédient Technique. Un site qui parle de développement Web
+                </p>
+            </div>
             <div class="area-design">
                 <div class="box box-html"><span>HTML5</span></div>
                 <div class="box box-css"><span>CSS3</span></div>
@@ -30,7 +29,5 @@
     <h1>{{ concept.title }}</h1>
 
     <p>{{ concept.content|raw }}</p>
-    </div>
-    
-             
+    </div>          
 {% endblock %}

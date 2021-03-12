@@ -24,7 +24,8 @@ footer {
     min-height:250px;
     padding-top: 10px;
     background-color: #120e1a;
-    color: white; 
+    color: white;
+    font-size: 14px;
     text-align: center;
 }
 
@@ -33,7 +34,6 @@ footer a {
     color: white;
     margin-top: auto;
 }
-
 
 .wrapper {
     width: 80%;
