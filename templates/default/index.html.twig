@@ -24,10 +24,13 @@
                 </div>
             </div>
     </header>
+    <div class="bg-grey">
+        <div class="wrapper">
+        <h1>{{ concept.title }}</h1>
 
-    <div class="wrapper bg-grey">
-    <h1>{{ concept.title }}</h1>
+        <p>{{ concept.content|raw }}</p>
+        </div>          
+    </div>
 
-    <p>{{ concept.content|raw }}</p>
-    </div>          
+    
 {% endblock %}
