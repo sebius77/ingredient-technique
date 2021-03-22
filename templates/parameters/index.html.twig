@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Parameters index{% endblock %}
+
+{% block body %}
+    <div class="wrapper">
+        <h1>Parameters index</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>PresentationText</th>
+                    <th>ReferenceList</th>
+                    <th>FooterText</th>
+                    <th>ToDoList</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for parameter in parameters %}
+                <tr>
+                    <td>{{ parameter.id }}</td>
+                    <td>{{ parameter.name }}</td>
+                    <td>{{ parameter.presentationText }}</td>
+                    <td>{{ parameter.referenceList }}</td>
+                    <td>{{ parameter.footerText }}</td>
+                    <td>{{ parameter.toDoList }}</td>
+                    <td>
+                        <a href="{{ path('parameters_show', {'id': parameter.id}) }}">show</a>
+                        <a href="{{ path('parameters_edit', {'id': parameter.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('parameters_new') }}">Create new</a>
+    </div>
+    
+{% endblock %}

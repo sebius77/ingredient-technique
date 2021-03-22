@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Parameters{% endblock %}
+
+{% block body %}
+    <div class="wrapper">
+        <h1>Create new Parameters</h1>
+
+        {{ include('parameters/_form.html.twig') }}
+
+        <a href="{{ path('parameters_index') }}">back to list</a>
+    </div>
+    
+{% endblock %}

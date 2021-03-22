@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ingrédient Technique{% endblock %}
+{% block body %}
+    
+    <div class="wrapper">
+    <h4>Références</h4>
+
+    <p>
+    {% if references is defined %}
+        {{ references }}
+    {% endif %}
+    </p>
+    </div>          
+    
+{% endblock %}

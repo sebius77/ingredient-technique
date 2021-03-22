@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Concept;
+use App\Entity\Parameters;
 use App\Entity\Sentence;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +17,14 @@ class DefaultController extends AbstractController
      */
     public function index(): Response
     {
+        $parameters = null;
+        $parameter_name = $_ENV['PARAMETER'];
+        if (!is_null($parameter_name)) {
+            $parameters = $this->getDoctrine()->getRepository(Parameters::class)->findOneBy([
+                'name' => $parameter_name
+            ]);
+        }
+
         // Récupération de la dernière notion (concept) ajoutée
         $concept = $this->getDoctrine()->getRepository(Concept::class)->last();
 
@@ -34,7 +43,8 @@ class DefaultController extends AbstractController
 
         return $this->render('default/index.html.twig', [
             'concept' =>  $concept,
-            'sentence' => $tabSentences[$random]
+            'sentence' => $tabSentences[$random],
+            'parameters' => $parameters
         ]);
     }
 
@@ -59,47 +69,23 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/about", name="about")
+     * @Route("/references", name="references")
      */
-    public function about(): Response
+    public function references()
     {
-        return $this->render('default/about.html.twig');
-    }
+        $references = null;
+        $parameter_name = $_ENV['PARAMETER'];
+        $parameters = $this->getDoctrine()->getRepository(Parameters::class)->findOneBy([
+            'name' => $parameter_name
+        ]);
 
-    /**
-     * @return Response
-     * @Route("/contact", name="contact")
-     */
-    public function contact(): Response
-    {
-        return $this->render('default/contact.html.twig');
-    }
+        if (!is_null($parameters)) {
+            $references = $parameters->getReferences();
+        }
+        
+        return $this->render('default/references.html.twig', [
+            'references' => $references
+        ]);
 
-    /**
-     * @return Response
-     * @Route("/history", name="history")
-     */
-    public function history(): Response
-    {
-        return $this->render('default/historique.html.twig');
-    }
-
-
-    /**
-     * @return Response
-     * @Route("/tools", name="tools")
-     */
-    public function tools(): Response
-    {
-        return $this->render('default/outils.html.twig');
-    }
-
-    /**
-     * @return Response
-     * @Route("/knowledge", name="knowledge")
-     */
-    public function knowledge(): Response
-    {
-        return $this->render('default/connaissances.html.twig');
     }
 }

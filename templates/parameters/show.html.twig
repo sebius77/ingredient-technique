@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Parameters{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+    <h1>Parameters</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ parameter.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ parameter.name }}</td>
+            </tr>
+            <tr>
+                <th>PresentationText</th>
+                <td>{{ parameter.presentationText }}</td>
+            </tr>
+            <tr>
+                <th>ReferenceList</th>
+                <td>{{ parameter.referenceList }}</td>
+            </tr>
+            <tr>
+                <th>FooterText</th>
+                <td>{{ parameter.footerText }}</td>
+            </tr>
+            <tr>
+                <th>ToDoList</th>
+                <td>{{ parameter.toDoList }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('parameters_index') }}">back to list</a>
+
+    <a href="{{ path('parameters_edit', {'id': parameter.id}) }}">edit</a>
+
+    {{ include('parameters/_delete_form.html.twig') }}
+</div>
+
+{% endblock %}
