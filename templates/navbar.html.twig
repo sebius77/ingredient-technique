@@ -1,7 +1,6 @@
-<nav class="navbar">
-       
-        <div class="area-brand"><a href="{{ path('default') }}">Ingrédient Technique</a></div>
-        <div class="area-login"><a href="{{ path('admin') }}"><button>Admin</button></a></div>
+<nav class="navbar">   
+    <div class="area-brand"><a href="{{ path('default') }}">Ingrédient Technique</a></div>
+    <div class="area-login"><a href="{{ path('admin') }}"><button>Admin</button></a></div>
         
     {% if (app.user) and (is_granted('ROLE_ADMIN')) %}
         <a href="#">Administration</a>
