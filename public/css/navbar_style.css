@@ -4,16 +4,15 @@
 **/
 .navbar {
     display: grid;
-    grid-template-columns: 200px repeat(4, 1fr) 200px;
+    grid-template-columns: 1fr 3fr 1fr;
     grid-template-rows: 40px;
 }
 
 .area-brand {
     grid-area: 1 / 1 / 2 / 2;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
-    height: 100%;
 }
 
 .area-brand a {
@@ -21,10 +20,8 @@
 }
 
 .area-login {
-    grid-area: 1 / 6 / 2 / 7;
-    height: 100%;
+    grid-area: 1 / 3 / 2 / 4;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
@@ -32,7 +29,7 @@
     width: 100px;
     height: 30px;
     padding: 3px 10px;
-    background: #3E5FE6;
+    background: #F54842;
     border: none;
     color: rgb(235, 223, 223);
     border-radius: 3px;
