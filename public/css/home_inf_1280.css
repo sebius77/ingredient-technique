@@ -33,7 +33,13 @@
     }
 
     .wrapper p {
-        width: 90%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .wrapper p iframe {
+        width: 100%;
+        height: auto;
     }
        
 }
