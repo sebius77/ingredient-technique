@@ -43,7 +43,10 @@ body {
     
     footer .rightArea {
         grid-area: 1 / 3 / 2 / 4;
-        padding-top: 10px;
+        padding-bottom: 10px;
+        display: flex;
+        align-items: end;
+
     }
     
 }
@@ -54,8 +57,10 @@ footer a {
     margin-top: auto;
 }
 
+
 footer ul li {
     list-style: none;
+    text-align: left;
 }
 
 .wrapper {
