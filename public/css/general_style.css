@@ -48,21 +48,6 @@ body {
     
 }
 
-@media (max-width: 1280px) {
-    footer {
-        display: grid;
-        grid-template-columns: 1fr;
-        min-height:250px;
-        padding-top: 10px;
-        background-color: #120e1a;
-        color: white;
-        font-size: 14px;
-        text-align: center;
-    }
-
-}
-
-
 footer a {
     text-decoration: none;
     color: white;
