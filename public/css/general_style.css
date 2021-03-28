@@ -65,6 +65,11 @@ footer a {
     text-align: center;
 }
 
+.wrapper p {
+    display: flex;
+    justify-content: center;
+}
+
 .form-input, .btn {
     align-self: center;
     width: 400px;
