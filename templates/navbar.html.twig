@@ -3,11 +3,38 @@
     <div class="area-login"><a href="{{ path('admin') }}"><button>Admin</button></a></div>
         
     {% if (app.user) and (is_granted('ROLE_ADMIN')) %}
-        <a href="#">Administration</a>
-        <a href="{{ path('concept') }}">Notions</a>
-        <a href="{{ path('theme') }}">Thème</a>
-        <a href="#">Exercices</a>
-        <a href="{{ path('sentence_index') }}">Phrase aléatoire</a>
-        <a href="{{ path('parameters_index') }}">Paramètres</a>
+        <div class="area-menu">
+            <ul>
+                <li>
+                    <a href="#" class="menu-administration">Administration</a>
+                        <div class="submenu-1">
+                            <ul>
+                                <li><a href="{{ path('concept') }}">Notions</a></li>
+                                <li><a href="{{ path('theme') }}">Thème</a></li>
+                                <li><a href="#">Exercices</a></li>
+                                <li><a href="{{ path('sentence_index') }}">Phrase aléatoire</a></li>
+                                <li><a href="{{ path('parameters_index') }}">Paramètres</a></li>
+                            </ul> 
+                        </div>
+                </li>
+            </ul>
+
+            <!--
+            <ul>
+                <li>
+                    <a href="#">Autres</a>
+                        <div class="submenu-1">
+                             <ul>
+                                <li><a href="{{ path('concept') }}">Notions</a></li>
+                                <li><a href="{{ path('theme') }}">Thème</a></li>
+                                <li><a href="#">Exercices</a></li>
+                                <li><a href="{{ path('sentence_index') }}">Phrase aléatoire</a></li>
+                                <li><a href="{{ path('parameters_index') }}">Paramètres</a></li>
+                            </ul>
+                        </div>
+                </li>
+            </ul>    
+            -->
+        </div> 
     {% endif %}
 </nav>
